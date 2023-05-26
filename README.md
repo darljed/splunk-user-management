@@ -4,21 +4,28 @@ Simple script to automate Splunk user's bulk creation, update, delete and collec
 # Usage
 Run the script using this command.
 
+`python3 user-management.py <path/to/file.csv>`
+
+example:
+
 ```bash
-python3 user-management.py <file> <action>
+python user-management.py template.csv
 ```
 
-## Create
-To bulk create users, create a csv file with the following fields: `id,roles,temp_pass,default_app`
+## How to setup template
+Create a valid csv file with the following fields: `action,id,roles,temp_pass,default_app`
+
+action => ["add","create","update","delete"]
+id => username
+roles => comma separated list of roles
+temp_pass => (optional) sets new temporary password and forces to update password upon login. Applicable only for add, create and update. if blank, user password won't be updated. 
+default_app => (optional) default application of the user
+
 
 Example: `new_users.csv`
-| id | roles | temp_pass | default_app |
-| --- | ----| --- | --- |
-| user1 | "user,power" | changeme | search |
-| user2 | "admin" | changeme | search |
-
-Run the script using this command.
-
-```bash
-python3 user-management.py new_users.csv add
-```
+| action | id | roles | temp_pass | default_app |
+| --- | --- | ----| --- | --- |
+| add | user1 | "user,power" | changeme | search |
+| update | "admin" | "admin,can_delete"| changeme | search |
+| update | "user2" | "user"|  | my_app |
+| delete | "user3" | | | |

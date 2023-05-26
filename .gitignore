@@ -1,2 +1,4 @@
 *.log
 venv/q
+config.json
+*.csv
