@@ -1,0 +1,8 @@
+{
+    "host": "localhost",
+    "splunkd_port": 8089,
+    "scheme": "https",
+    "skip_ssl_verify": true,
+    "splunk_username": "",
+    "splunk_password": ""
+}

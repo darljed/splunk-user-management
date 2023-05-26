@@ -1,4 +1,0 @@
-id,roles,temp_pass,default_app
-test.user1,"user,power,trackeruser",changeme,search
-test.user2,"user,power,trackeruser",changeme,slh_training_tracker
-test.user3,"user,power,trackeruser",changeme,search
