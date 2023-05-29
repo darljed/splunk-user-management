@@ -15,7 +15,7 @@ python user-management.py template.csv
 ## How to setup template
 Create a valid csv file with the following fields: `action,id,roles,temp_pass,default_app`
 
-- `action`: Values can be: `action,id,roles,temp_pass,default_app`
+- `action`: Values can be: `add,create,update,update_add_roles,delete`
 
 - `id`: username
 
