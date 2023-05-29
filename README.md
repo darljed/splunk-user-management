@@ -1,5 +1,5 @@
 # splunk-user-management
-Simple script to automate Splunk user's bulk creation, update, delete and collection.
+Simple script to automate Splunk user's bulk creation, update and delete.
 
 # Usage
 Run the script using this command.
