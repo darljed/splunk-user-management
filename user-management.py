@@ -88,7 +88,29 @@ class Users:
             self.logger(f"user {id} has been updated.")
         else:
             self.logger(f"unable to process request")
-        
+
+
+    def updateAddRoles(self,data):
+        self.logger(json.dumps(data))
+        # @data => Dict
+        id = data.get('id')
+        roles = data.get('roles').split(",")
+        user_details = self.getUser(id)
+        if not user_details:
+            self.logger(f"unable to process request")
+        else:
+            user_roles = user_details['entry'][0]['content']['roles']
+            user_roles.extend(roles)
+            user_roles = list(set(user_roles))
+            data['roles'] = ','.join(user_roles)
+            # remove other details from the data 
+            new_data = {
+                'id': data.get('id'),
+                'roles': data.get('roles')
+            }
+
+            # call update function 
+            self.updateUser(new_data)
 
     def getUser(self,user):
         # @user => string
@@ -232,6 +254,8 @@ class Users:
                     self.createUser(row)
                 if(action == "update"):
                     self.updateUser(row)
+                if(action == "update_add_roles"):
+                    self.updateAddRoles(row)
                 if(action == "delete"):
                     self.deleteUser(row.get('id'))
         
